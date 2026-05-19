@@ -28,4 +28,24 @@ class StudentController extends Controller
         $students = Student::all();
         return view('fetch', compact('students'));
     }
+
+    public function edit($id)
+    {
+        $student = Student::find($id);
+
+        return view('edit', compact('student'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $student = Student::find($id);
+
+        $student->update([
+            'name'  => $request->name,
+            'email' => $request->email,
+            'age'   => $request->age
+        ]);
+
+        return redirect('/show');
+    }
 }

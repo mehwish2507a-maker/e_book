@@ -10,3 +10,9 @@ Route::get('show', [StudentController::class, 'show']);
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/edit/{id}', [StudentController::class, 'edit'])
+    ->name('edit.student');
+
+Route::post('/update/{id}', [StudentController::class, 'update'])
+    ->name('update.student');
